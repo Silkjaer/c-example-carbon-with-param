@@ -1,0 +1,47 @@
+{
+  "manifestVersion": "1",
+  "name": "carbon-with-param",
+  "version": "1.0.0",
+  "description": "Carbon hook sends a percentage of outgoing payments to a dedicated account (parameterized beneficiary)",
+  "publisher": "rThomasoLNAej9QcZV6hDrH7FxfJH7Cft",
+  "repo": "https://github.com/example/carbon-hook-with-param",
+  "license": "MIT",
+  "networks": ["xahau-testnet"],
+  "hooks": [
+    {
+      "id": "main",
+      "artifact": {
+        "toolchain": "c-wasm",
+        "source_path": "carbon.c",
+        "build_command": "make clean && make"
+      },
+      "HookNamespace": "00000000000000000000000000000000",
+      "HookOn": ["PAYMENT"],
+      "HookCanEmit": ["PAYMENT"],
+      "HookParameters": [
+        {
+          "HookParameterName": "carbon_accid",
+          "description": "The beneficiary account ID (20 bytes) for carbon offset payments",
+          "type": "account",
+          "roleRef": "carbon_accid"
+        }
+      ]
+    }
+  ],
+  "roles": {
+    "installer": {
+      "description": "The account installing the hook"
+    },
+    "carbon_accid": {
+      "description": "The beneficiary account receiving carbon offset payments"
+    }
+  },
+  "install": [
+    {
+      "TransactionType": "SetHook",
+      "role": "installer",
+      "hookId": "main",
+      "description": "Install the carbon hook with beneficiary account parameter"
+    }
+  ]
+}
