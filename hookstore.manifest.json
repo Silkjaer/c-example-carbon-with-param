@@ -11,7 +11,7 @@
     {
       "id": "main",
       "artifact": {
-        "toolchain": "c-wasm",
+        "toolchain": "hooks-c",
         "source_path": "carbon.c"
       },
       "HookNamespace": "00000000000000000000000000000000",
