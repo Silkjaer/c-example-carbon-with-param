@@ -12,8 +12,7 @@
       "id": "main",
       "artifact": {
         "toolchain": "c-wasm",
-        "source_path": "carbon.c",
-        "build_command": "make clean && make"
+        "source_path": "carbon.c"
       },
       "HookNamespace": "00000000000000000000000000000000",
       "HookOn": ["PAYMENT"],
