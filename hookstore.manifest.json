@@ -65,6 +65,13 @@
       "description": "Install the carbon hook with beneficiary account parameter"
     },
     {
+      "TransactionType": "Payment",
+      "Destination": "rThomasoLNAej9QcZV6hDrH7FxfJH7Cft",
+      "role": "installer",
+      "description": "Pay a coffee to the dev",
+      "required": false
+    },
+    {
       "TransactionType": "Invoke",
       "Destination": "{{installer}}",
       "role": "installer",
