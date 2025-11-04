@@ -41,12 +41,50 @@
       "description": "The beneficiary account receiving carbon offset payments"
     }
   },
+  "userConfig": {
+    "niceString": {
+      "inputType": "string",
+      "encoding": "utf8",
+      "default": "This is a nice string! Sömæ Fåñï Characters.",
+      "description": "A nice string we wont use for anything"
+    },
+    "niceNumber": {
+      "inputType": "uint32",
+      "encoding": "uint32",
+      "default": "1000000",
+      "required": false,
+      "description": "A nice number we wont use for anything",
+      "endianness": "BE"
+    }
+  },
   "install": [
     {
       "TransactionType": "SetHook",
       "role": "installer",
-      "hookId": "main",
+      "hookIds": ["main"],
       "description": "Install the carbon hook with beneficiary account parameter"
+    },
+    {
+      "TransactionType": "Invoke",
+      "Destination": "{{installer}}",
+      "role": "installer",
+      "description": "Send some arbitrary blob invoke stuff",
+      "blob": {
+        "parts": [
+          {
+          "type": "ascii",
+          "value": "MYID"
+          },
+          {
+            "type": "userConfig",
+            "value": "{{niceString}}"
+          },
+          {
+            "type": "userConfig",
+            "value": "{{niceNumber}}"
+          }
+        ]
+      }
     }
   ]
 }
