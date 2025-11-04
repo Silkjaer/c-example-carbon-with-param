@@ -6,7 +6,9 @@
   "publisher": "rThomasoLNAej9QcZV6hDrH7FxfJH7Cft",
   "repo": "https://github.com/example/carbon-hook-with-param",
   "license": "MIT",
-  "networks": ["xahau-testnet"],
+  "networks": [
+    "xahau-testnet"
+  ],
   "hooks": [
     {
       "id": "main",
@@ -15,14 +17,18 @@
         "source_path": "carbon.c"
       },
       "HookNamespace": "00000000000000000000000000000000",
-      "HookOn": ["PAYMENT"],
-      "HookCanEmit": ["PAYMENT"],
+      "HookOn": [
+        "PAYMENT"
+      ],
+      "HookCanEmit": [
+        "PAYMENT"
+      ],
       "HookParameters": [
         {
           "HookParameterName": "carbon_accid",
-          "description": "The beneficiary account ID (20 bytes) for carbon offset payments",
           "type": "account",
-          "roleRef": "carbon_accid"
+          "value": "{{carbon_accid}}",
+          "encoding": "hex"
         }
       ]
     }
