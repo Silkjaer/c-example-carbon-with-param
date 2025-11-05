@@ -9,6 +9,30 @@
   "networks": [
     "xahau-testnet"
   ],
+  "roles": {
+    "installer": {
+      "description": "The account installing the hook"
+    },
+    "carbon_accid": {
+      "description": "The beneficiary account receiving carbon offset payments"
+    }
+  },
+  "userConfig": {
+    "niceNumber": {
+      "default": "1000000",
+      "encoding": "uint32",
+      "required": false,
+      "inputType": "uint32",
+      "endianness": "BE",
+      "description": "A nice number we wont use for anything"
+    },
+    "niceString": {
+      "default": "This is a nice string! Sömæ Fåñï Characters.",
+      "encoding": "utf8",
+      "inputType": "string",
+      "description": "A nice string we wont use for anything"
+    }
+  },
   "hooks": [
     {
       "id": "main",
@@ -26,61 +50,40 @@
       "HookParameters": [
         {
           "HookParameterName": "carbon_accid",
+          "HookParameterValue": {
           "type": "account",
           "value": "{{carbon_accid}}",
           "encoding": "hex"
+          }
         }
       ]
     }
   ],
-  "roles": {
-    "installer": {
-      "description": "The account installing the hook"
-    },
-    "carbon_accid": {
-      "description": "The beneficiary account receiving carbon offset payments"
-    }
-  },
-  "userConfig": {
-    "niceString": {
-      "inputType": "string",
-      "encoding": "utf8",
-      "default": "This is a nice string! Sömæ Fåñï Characters.",
-      "description": "A nice string we wont use for anything"
-    },
-    "niceNumber": {
-      "inputType": "uint32",
-      "encoding": "uint32",
-      "default": "1000000",
-      "required": false,
-      "description": "A nice number we wont use for anything",
-      "endianness": "BE"
-    }
-  },
   "install": [
     {
       "TransactionType": "SetHook",
+      "description": "Install the carbon hook with beneficiary account parameter",
       "role": "installer",
-      "hookIds": ["main"],
-      "description": "Install the carbon hook with beneficiary account parameter"
+      "hookIds": [
+        "main"
+      ]
     },
     {
       "TransactionType": "Payment",
-      "Destination": "rThomasoLNAej9QcZV6hDrH7FxfJH7Cft",
-      "role": "installer",
       "description": "Pay a coffee to the dev",
-      "required": false
+      "required": false,
+      "role": "installer",
+      "Destination": "rThomasoLNAej9QcZV6hDrH7FxfJH7Cft"
     },
     {
       "TransactionType": "Invoke",
-      "Destination": "{{installer}}",
-      "role": "installer",
       "description": "Send some arbitrary blob invoke stuff",
-      "blob": {
-        "parts": [
+      "role": "installer",
+      "Destination": "{{installer}}",
+      "Blob": [
           {
-          "type": "ascii",
-          "value": "MYID"
+            "type": "ascii",
+            "value": "MYID"
           },
           {
             "type": "userConfig",
@@ -91,7 +94,6 @@
             "value": "{{niceNumber}}"
           }
         ]
-      }
     }
   ]
 }
