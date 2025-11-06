@@ -51,9 +51,9 @@
         {
           "HookParameterName": "carbon_accid",
           "HookParameterValue": {
-          "type": "account",
-          "value": "{{carbon_accid}}",
-          "encoding": "hex"
+            "type": "account",
+            "value": "{{carbon_accid}}",
+            "encoding": "ascii"
           }
         }
       ]
@@ -81,19 +81,19 @@
       "role": "installer",
       "Destination": "{{installer}}",
       "Blob": [
-          {
-            "type": "ascii",
-            "value": "MYID"
-          },
-          {
-            "type": "userConfig",
-            "value": "{{niceString}}"
-          },
-          {
-            "type": "userConfig",
-            "value": "{{niceNumber}}"
-          }
-        ]
+        {
+          "type": "ascii",
+          "value": "MYID"
+        },
+        {
+          "type": "userConfig",
+          "value": "{{niceString}}"
+        },
+        {
+          "type": "userConfig",
+          "value": "{{niceNumber}}"
+        }
+      ]
     }
   ]
 }
