@@ -11,7 +11,6 @@
   ],
   "roles": {
     "installer": {
-      "label": "Hook installer",
       "description": "The account installing the hook"
     },
     "carbon_accid": {
