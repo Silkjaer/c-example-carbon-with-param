@@ -44,7 +44,7 @@
         "toolchain": "hooks-c",
         "source_path": "carbon.c"
       },
-      "HookNamespace": "00000000000000000000000000000000",
+      "HookNamespace": "0000000000000000000000000000000000000000000000000000000000000000",
       "HookOn": [
         "PAYMENT"
       ],
