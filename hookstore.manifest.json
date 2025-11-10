@@ -63,7 +63,7 @@
       ],
       "postInstallSettings": [
   {
-    "name": "updateBeneficiary",
+    "name": "Update Beneficiary",
     "description": "Update the carbon offset beneficiary account that receives payments",
     "TransactionType": "Invoke",
     "HookParameters": [
