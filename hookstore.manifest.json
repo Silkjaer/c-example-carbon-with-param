@@ -60,7 +60,31 @@
             "encoding": "ascii"
           }
         }
+      ],
+      "abi": {
+  "notes": "Auto-generated from manifest and code analysis",
+  "hookParameters": [
+    {
+      "name": "carbon_accid",
+      "selector": [
+        {
+          "type": "VarString",
+          "pattern": "carbon_accid",
+          "byteLength": 12,
+          "patternEncoding": "ascii",
+          "exclude": true,
+          "notes": "Parameter name as stored on-ledger"
+        }
+      ],
+      "data": [
+        {
+          "type": "VarString",
+          "byteLength": 34
+        }
       ]
+    }
+  ]
+      }
     }
   ],
   "install": [
