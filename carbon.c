@@ -20,6 +20,7 @@ int64_t hook(uint32_t reserved)
     // a more efficient way to do this is precompute the account-id from the raddr (if the raddr never changes)
     uint8_t carbon_accid[32];
     int64_t ret = hook_param(SBUF(carbon_accid), (uint32_t)"carbon_accid", 11);
+    TRACEVAR(ret);
     if (ret < 20)
     {
         TRACEVAR(ret);
