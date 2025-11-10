@@ -84,6 +84,29 @@
         "required": true
       }
     }
+  },
+        {
+    "name": "Update something else",
+    "description": "Update something else??",
+    "TransactionType": "Invoke",
+    "HookParameters": [
+      {
+        "HookParameterName": "carbon_accid",
+        "HookParameterValue": {
+          "type": "userConfig",
+          "value": "{{newBeneficiary}}"
+        }
+      }
+    ],
+    "userConfig": {
+      "newBeneficiary": {
+        "label": "New Beneficiary Account",
+        "inputType": "account",
+        "encoding": "hex",
+        "description": "The account that will receive carbon offset payments",
+        "required": true
+      }
+    }
   }
 ],
       "abi": {
