@@ -78,7 +78,8 @@
       ],
       "data": [
         {
-          "type": "AccountID"
+          "type": "VarString",
+          "byteLength": 34
         }
       ]
     }
