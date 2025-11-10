@@ -18,13 +18,14 @@ int64_t hook(uint32_t reserved)
     
     // hooks communicate accounts via the 20 byte account ID, this can be generated from an raddr like so
     // a more efficient way to do this is precompute the account-id from the raddr (if the raddr never changes)
-    uint8_t carbon_accid[32];
-    int64_t ret = hook_param(SBUF(carbon_accid), (uint32_t)"carbon_accid", 11);
+    uint8_t carbon_accid[20]; 
+    int64_t ret = hook_param(SBUF(carbon_accid), (uint32_t)"carbon_accid", 12);
     TRACEVAR(ret);
-    if (ret < 20)
-    {
-        TRACEVAR(ret);
+    if (ret < 0) {
         rollback(SBUF("Carbon: \"carbon_accid\" parameter missing"), 4);
+    }
+    if (ret != 20) {
+        rollback(SBUF("Carbon: \"carbon_accid\" wrong length, expected 20"), 5);
     }
     TRACEVAR(ret);
 
