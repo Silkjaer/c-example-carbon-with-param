@@ -61,29 +61,54 @@
           }
         }
       ],
-      "abi": {
-  "notes": "Auto-generated from manifest and code analysis",
-  "hookParameters": [
-    {
-      "name": "carbon_accid",
-      "selector": [
-        {
-          "type": "VarString",
-          "pattern": "carbon_accid",
-          "byteLength": 12,
-          "patternEncoding": "ascii",
-          "exclude": true,
-          "notes": "Parameter name as stored on-ledger"
+      "postInstallSettings": [
+  {
+    "name": "updateBeneficiary",
+    "description": "Update the carbon offset beneficiary account that receives payments",
+    "TransactionType": "Invoke",
+    "HookParameters": [
+      {
+        "HookParameterName": "carbon_accid",
+        "HookParameterValue": {
+          "type": "userConfig",
+          "value": "{{newBeneficiary}}"
         }
-      ],
-      "data": [
-        {
-          "type": "AccountID",
-          "byteLength": 20
-        }
-      ]
+      }
+    ],
+    "userConfig": {
+      "newBeneficiary": {
+        "label": "New Beneficiary Account",
+        "inputType": "account",
+        "encoding": "hex",
+        "description": "The account that will receive carbon offset payments",
+        "required": true
+      }
     }
-  ]
+  }
+],
+      "abi": {
+        "notes": "Auto-generated from manifest and code analysis",
+        "hookParameters": [
+          {
+            "data": [
+              {
+                "type": "AccountID",
+                "byteLength": 20
+              }
+            ],
+            "name": "carbon_accid",
+            "selector": [
+              {
+                "type": "VarString",
+                "notes": "Parameter name as stored on-ledger",
+                "exclude": true,
+                "pattern": "carbon_accid",
+                "byteLength": 12,
+                "patternEncoding": "ascii"
+              }
+            ]
+          }
+        ]
       }
     }
   ],
