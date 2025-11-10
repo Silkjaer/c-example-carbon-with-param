@@ -57,7 +57,7 @@
           "HookParameterValue": {
             "type": "account",
             "value": "{{carbon_accid}}",
-            "encoding": "ascii"
+            "encoding": "hex"
           }
         }
       ],
