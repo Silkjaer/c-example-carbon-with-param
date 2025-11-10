@@ -83,7 +83,6 @@
       "TransactionType": "Invoke",
       "description": "Send some arbitrary blob invoke stuff",
       "role": "installer",
-      "Destination": "{{installer}}",
       "Blob": [
         {
           "type": "ascii",
