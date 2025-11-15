@@ -12,4 +12,75 @@ to test:
 - open debug stream filtered on Carol
 - run the transaction and see incoming payment
 
+```JSON
+{ 
+  "name": "votinghook",
+  "hook_account": "",
+  "hook_namespace_id": "",
+  "hook_definition": {
+    "name": "votinghook",
+    "description": "votinghook",
+    "hook_hash": "",
+    "version": [],
+    "hook_states": {
+      "name": "votinghook",
+      "description": "votinghook",
+      "fields": [
+        {
+          "name": "Candidates",
+          "hookstate_key": [
+            {
+              "type": "Null",
+              "name": "padding",
+              "byte_length": 31,
+              "exclude": true
+            },
+            {
+              "type": "UInt8",
+              "name": "ID",
+              "exclude": false
+            }
+          ],
+          "hookstate_data": [
+            {
+              "type": "VarString",
+              "name": "Candidate name",
+              "byte_length":32,
+              "exclude":false
+            },
+            {
+              "type":"UInt16",
+              "name":"Number of votes"
+            }
+          ]
+        },
+        {
+          "name": "Votes",
+          "hookstate_key": [
+            {
+              "type": "Null",
+              "name": "padding",
+              "byte_length": 12,
+              "exclude": true
+            },
+            {
+              "type": "AccountID",
+              "name": "Voter"
+            }
+          ],
+          "hookstate_data": [
+            {
+              "type": "VarString",
+              "name": "Candidate name",
+              "byte_length":32,
+              "exclude":false
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+```
+
 Other hook changes, such as removing the cbak function (which is included just as an example and not essential to the hook functionality), or fixing the hooks-raddr-conv-pure warning, are left as an exercise for the reader.
