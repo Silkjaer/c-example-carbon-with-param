@@ -1,6 +1,6 @@
 {
   "manifestVersion": "1",
-  "name": "carbon-with-param",
+  "name": "c-carbon-example-with-param",
   "version": "1.0.0",
   "description": "Carbon hook sends a percentage of outgoing payments to a dedicated account (parameterized beneficiary)",
   "publisher": "rThomasoLNAej9QcZV6hDrH7FxfJH7Cft",
@@ -27,7 +27,11 @@
       "required": false,
       "inputType": "uint32",
       "endianness": "BE",
-      "description": "A nice number we wont use for anything"
+      "description": "A nice number we wont use for anything",
+      "validation": {
+        "min": 50000,
+        "max": 100000000
+      }
     },
     "niceString": {
       "label": "Nice string",
@@ -61,54 +65,6 @@
           }
         }
       ],
-      "postInstallSettings": [
-  {
-    "name": "Update Beneficiary",
-    "description": "Update the carbon offset beneficiary account that receives payments",
-    "TransactionType": "Invoke",
-    "HookParameters": [
-      {
-        "HookParameterName": "carbon_accid",
-        "HookParameterValue": {
-          "type": "userConfig",
-          "value": "{{newBeneficiary}}"
-        }
-      }
-    ],
-    "userConfig": {
-      "newBeneficiary": {
-        "label": "New Beneficiary Account",
-        "inputType": "account",
-        "encoding": "hex",
-        "description": "The account that will receive carbon offset payments",
-        "required": true
-      }
-    }
-  },
-        {
-    "name": "Update something else",
-    "description": "Update something else??",
-    "TransactionType": "Invoke",
-    "HookParameters": [
-      {
-        "HookParameterName": "carbon_accid",
-        "HookParameterValue": {
-          "type": "userConfig",
-          "value": "{{newBeneficiary}}"
-        }
-      }
-    ],
-    "userConfig": {
-      "newBeneficiary": {
-        "label": "New Beneficiary Account",
-        "inputType": "account",
-        "encoding": "hex",
-        "description": "The account that will receive carbon offset payments",
-        "required": true
-      }
-    }
-  }
-],
       "abi": {
         "notes": "Auto-generated from manifest and code analysis",
         "hookParameters": [
@@ -132,7 +88,55 @@
             ]
           }
         ]
-      }
+      },
+      "postInstallSettings": [
+        {
+          "name": "Update Beneficiary",
+          "userConfig": {
+            "newBeneficiary": {
+              "label": "New Beneficiary Account",
+              "encoding": "hex",
+              "required": true,
+              "inputType": "account",
+              "description": "The account that will receive carbon offset payments"
+            }
+          },
+          "description": "Update the carbon offset beneficiary account that receives payments",
+          "HookParameters": [
+            {
+              "HookParameterName": "carbon_accid",
+              "HookParameterValue": {
+                "type": "userConfig",
+                "value": "{{newBeneficiary}}"
+              }
+            }
+          ],
+          "TransactionType": "Invoke"
+        },
+        {
+          "name": "Update something else",
+          "userConfig": {
+            "newBeneficiary": {
+              "label": "New Beneficiary Account",
+              "encoding": "hex",
+              "required": true,
+              "inputType": "account",
+              "description": "The account that will receive carbon offset payments"
+            }
+          },
+          "description": "Update something else??",
+          "HookParameters": [
+            {
+              "HookParameterName": "carbon_accid",
+              "HookParameterValue": {
+                "type": "userConfig",
+                "value": "{{newBeneficiary}}"
+              }
+            }
+          ],
+          "TransactionType": "Invoke"
+        }
+      ]
     }
   ],
   "install": [
